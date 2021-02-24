@@ -1,13 +1,13 @@
 <ion-header [translucent]="true">
     <ion-toolbar>
         <ion-buttons slot="start">
-            <!-- <ion-icon slot="icon-only" color="primary" name="list-outline"></ion-icon> -->
             <img class="my-icon" src="https://img.icons8.com/pastel-glyph/64/000000/referee-jersey.png" />
         </ion-buttons>
         <ion-title>
             League Manager
         </ion-title>
     </ion-toolbar>
+
 </ion-header>
 <!-- <ion-menu side="start" menuId="first" contentId="main">
     <ion-header>
@@ -31,15 +31,17 @@
     </ion-content>
 </ion-menu>
 <ion-router-outlet id="main"></ion-router-outlet> -->
+
 <ion-content color="light">
-    <ion-toolbar class="ion-padding" color="light">
+    <ion-toolbar class="div-center" color="light">
         <ion-buttons slot="start">
-            <ion-icon slot="icon-only" color="primary" name="football-outline"></ion-icon>
+            <ion-icon slot="icon-only" color="dark" name="football-outline"></ion-icon>
 
         </ion-buttons>
         <ion-title>
             My Leagues
         </ion-title>
+
     </ion-toolbar>
 
 
@@ -56,4 +58,18 @@
             </ion-row>
         </ion-grid>
     </ion-card>
+
+    <!-- Default Refresher -->
+
+
+    <!-- Custom Refresher Properties -->
+    <!-- <ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher> -->
+
+    <!-- Custom Refresher Content -->
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="refresh-outline" refreshingSpinner="bubbles">
+        </ion-refresher-content>
+    </ion-refresher>
 </ion-content>

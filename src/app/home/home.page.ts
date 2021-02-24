@@ -27,11 +27,16 @@ export class HomePage implements OnInit {
     this.menu.open('first');
   }
 
+  doRefresh(event) {
+    this.leagues = [];
+    this.getData(event);
+  }
 
-  getData(){
+  getData(event?: any){
     console.log('pulsando...');
     this.data.getLeagues().subscribe( resp => {
       this.leagues = resp;
+      event ? event.target.complete() : null;
       console.log(resp);
     })
   }
