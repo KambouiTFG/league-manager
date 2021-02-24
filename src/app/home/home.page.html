@@ -1,16 +1,15 @@
 <ion-header [translucent]="true">
     <ion-toolbar>
         <ion-buttons slot="start">
-            <ion-button (click)="openFirst()">
-                <ion-icon slot="icon-only" color="primary" name="list-outline"></ion-icon>
-            </ion-button>
+            <!-- <ion-icon slot="icon-only" color="primary" name="list-outline"></ion-icon> -->
+            <img class="my-icon" src="https://img.icons8.com/pastel-glyph/64/000000/referee-jersey.png" />
         </ion-buttons>
         <ion-title>
             League Manager
         </ion-title>
     </ion-toolbar>
 </ion-header>
-<ion-menu side="start" menuId="first" contentId="main">
+<!-- <ion-menu side="start" menuId="first" contentId="main">
     <ion-header>
         <ion-toolbar color="dark">
             <ion-buttons slot="start">
@@ -31,10 +30,30 @@
         </ion-list>
     </ion-content>
 </ion-menu>
-<ion-router-outlet id="main"></ion-router-outlet>
-<ion-content class="ion-padding">
+<ion-router-outlet id="main"></ion-router-outlet> -->
+<ion-content color="light">
+    <ion-toolbar class="ion-padding" color="light">
+        <ion-buttons slot="start">
+            <ion-icon slot="icon-only" color="primary" name="football-outline"></ion-icon>
 
-    <ion-button (click)="getData()" color="primary">
-        Click me
-    </ion-button>
+        </ion-buttons>
+        <ion-title>
+            My Leagues
+        </ion-title>
+    </ion-toolbar>
+
+
+    <ion-card *ngFor="let league of leagues">
+        <ion-grid fixed>
+            <ion-row>
+                <ion-avatar>
+                    <img [src]='league["Logo de la Liga"]' />
+                </ion-avatar>
+                <ion-card-header>
+                    <ion-card-subtitle>League</ion-card-subtitle>
+                    <ion-card-title>{{league["Nombre De La Liga"]}}</ion-card-title>
+                </ion-card-header>
+            </ion-row>
+        </ion-grid>
+    </ion-card>
 </ion-content>

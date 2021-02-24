@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { DataService } from '../services/data.service';
+import { League } from '../interfaces/interfaces';
 
 
 @Component({
@@ -8,10 +9,17 @@ import { DataService } from '../services/data.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
+  leagues: League[];
 
   constructor(private menu: MenuController,
               private data: DataService) {}
+  
+
+
+  ngOnInit() {
+    this.getData();
+  }
 
 
   openFirst() {
@@ -23,6 +31,7 @@ export class HomePage {
   getData(){
     console.log('pulsando...');
     this.data.getLeagues().subscribe( resp => {
+      this.leagues = resp;
       console.log(resp);
     })
   }
