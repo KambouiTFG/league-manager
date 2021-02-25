@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
-import { DataService } from '../services/data.service';
-import { League } from '../interfaces/interfaces';
+import { DataService } from '../../services/data.service';
+import { League } from '../../interfaces/interfaces';
 
 
 @Component({

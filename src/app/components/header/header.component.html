@@ -1,0 +1,19 @@
+<!-- <ion-toolbar color="light" class="div-center">
+    <ion-buttons slot="start">
+        <ion-icon slot="icon-only" color="dark" name="football-outline"></ion-icon>
+<ion-img class="my-icon" src="../../../assets/icon/referee.png"></ion-img>
+</ion-buttons>
+<ion-title slot="start ">
+    My Leagues
+</ion-title>
+</ion-toolbar> -->
+
+<ion-toolbar color="light" class="div-center" mode="md">
+    <ion-buttons slot="start">
+        <ion-img [src]="getIcon()"></ion-img>
+        <!-- <img class="my-icon" src="../../../assets/icon/league.png" /> -->
+    </ion-buttons>
+    <ion-title>
+        {{title}}
+    </ion-title>
+</ion-toolbar>

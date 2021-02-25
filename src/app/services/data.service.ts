@@ -22,6 +22,10 @@ export class DataService {
     return this.exeQuery<League[]>("leagues");
   }
 
+  getLeagueData(idLeague: string){
+    return this.exeQuery<League[]>(`leagues?Identificador=${idLeague}`);
+  }
+
   getTeams() {
     return this.exeQuery<Team[]>("teams");
   }

@@ -1,0 +1,19 @@
+<ion-content color="light">
+
+    <ion-toolbar color="light">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="leagues"></ion-back-button>
+        </ion-buttons>
+        <app-header [title]='leagueInfo["Nombre De La Liga"]' [img]='leagueInfo["Logo de la Liga"]' *ngIf="leagueInfo"></app-header>
+
+        <ion-buttons slot="end">
+            <ion-icon slot="icon-only" name="trophy-outline"></ion-icon>
+        </ion-buttons>
+    </ion-toolbar>
+
+    <!-- <app-league-card *ngFor="let league of leagues" [league]="league"></app-league-card> -->
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="refresh-outline" refreshingSpinner="bubbles">
+        </ion-refresher-content>
+    </ion-refresher>
+</ion-content>

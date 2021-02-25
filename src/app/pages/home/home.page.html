@@ -1,0 +1,9 @@
+<!-- <app-main-header></app-main-header> -->
+<ion-content color="light">
+    <app-header title="My Leagues"></app-header>
+    <app-league-card *ngFor="let league of leagues" [league]="league"></app-league-card>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="refresh-outline" refreshingSpinner="bubbles">
+        </ion-refresher-content>
+    </ion-refresher>
+</ion-content>
