@@ -18,7 +18,7 @@ export class DataService {
     return this.http.get<T>(query);
   }
 
-  getLeagues() {
+  getAllLeagues() {
     return this.exeQuery<League[]>("leagues");
   }
 
@@ -26,11 +26,29 @@ export class DataService {
     return this.exeQuery<League[]>(`leagues?Identificador=${idLeague}`);
   }
 
-  getTeams() {
+  getTeamData(idTeam: string){
+    return this.exeQuery<Team[]>(`teams?id=${idTeam}`);
+  }
+
+  getTeams(idLeague: string){
+    return this.exeQuery<Team[]>(`teams?Liga=${idLeague}`);
+  }
+
+  getPlayers(idTeam: string){
+    return this.exeQuery<Player[]>(`players?teamId=${idTeam}`);
+  }
+
+  getPlayerInfo(idPlayer: string) {
+    return this.exeQuery<Player[]>(`players?id=${idPlayer}`);
+  }
+
+
+
+  getAllTeams() {
     return this.exeQuery<Team[]>("teams");
   }
 
-  getPlayers() {
+  getAllPlayers() {
     return this.exeQuery<Player[]>("players");
   }
 }

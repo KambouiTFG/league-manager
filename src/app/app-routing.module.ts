@@ -15,6 +15,14 @@ const routes: Routes = [
     path: 'leagues/:idleague',
     loadChildren: () => import('./pages/league/league.module').then( m => m.LeaguePageModule)
   },
+  {
+    path: 'team/:idteam',
+    loadChildren: () => import('./pages/team/team.module').then( m => m.TeamPageModule)
+  },
+  {
+    path: 'player/:idplayer',
+    loadChildren: () => import('./pages/player/player.module').then( m => m.PlayerPageModule)
+  },
 ];
 
 @NgModule({

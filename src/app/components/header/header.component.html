@@ -10,7 +10,7 @@
 
 <ion-toolbar color="light" class="div-center" mode="md">
     <ion-buttons slot="start">
-        <ion-img [src]="getIcon()"></ion-img>
+        <ion-img [src]="img" class="my-icon" *ngIf="img"></ion-img>
         <!-- <img class="my-icon" src="../../../assets/icon/league.png" /> -->
     </ion-buttons>
     <ion-title>

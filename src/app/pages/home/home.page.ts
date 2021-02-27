@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { DataService } from '../../services/data.service';
 import { League } from '../../interfaces/interfaces';
+import { LoadingController } from '@ionic/angular';
+import { UiServiceService } from '../../services/ui-service.service';
+
 
 
 @Component({
@@ -11,9 +14,11 @@ import { League } from '../../interfaces/interfaces';
 })
 export class HomePage implements OnInit {
   leagues: League[];
+  loading;
 
   constructor(private menu: MenuController,
-              private data: DataService) {}
+              private data: DataService,
+              private uiCtrl: UiServiceService) {}
   
 
 
@@ -32,12 +37,13 @@ export class HomePage implements OnInit {
     this.getData(event);
   }
 
-  getData(event?: any){
-    console.log('pulsando...');
-    this.data.getLeagues().subscribe( resp => {
+  async getData(event?: any){
+    const loadingg = await this.uiCtrl.presentLoading('Loading data...');
+    this.data.getAllLeagues().subscribe( async resp => {
       this.leagues = resp;
       event ? event.target.complete() : null;
-      console.log(resp);
+      await this.uiCtrl.dismisLoading(loadingg);
     })
   }
+
 }

@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { IonicModule } from '@ionic/angular';
 import { LeagueCardComponent } from './league-card/league-card.component';
 import { MainHeaderComponent } from './main-header/main-header.component';
+import { ListComponent } from './list/list.component';
 
 
 
@@ -11,12 +12,14 @@ import { MainHeaderComponent } from './main-header/main-header.component';
   declarations: [
     MainHeaderComponent,
     HeaderComponent,
-    LeagueCardComponent
+    LeagueCardComponent,
+    ListComponent
   ],
   exports:  [
     MainHeaderComponent,
     HeaderComponent,
-    LeagueCardComponent
+    LeagueCardComponent,
+    ListComponent
   ],
   imports: [
     CommonModule,

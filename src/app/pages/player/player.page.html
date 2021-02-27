@@ -1,0 +1,53 @@
+<ion-content color="light">
+    <ion-toolbar color="light">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="leagues"></ion-back-button>
+        </ion-buttons>
+        <app-header title="Player info"></app-header>
+
+        <ion-buttons slot="end">
+            <ion-icon slot="icon-only" name="person-circle-outline"></ion-icon>
+        </ion-buttons>
+    </ion-toolbar>
+    <div class="player ion-padding" *ngIf="infoPlayer">
+
+        <img [src]="infoPlayer.Avatar" class="img-avatar">
+
+
+        <ion-item>
+            <ion-label>
+                <h2 class="text-tertiary">Name</h2>
+                <p class="ion-text-center">{{infoPlayer["Nombre del Jugador"]}}</p>
+            </ion-label>
+        </ion-item>
+
+
+        <div class="ion-padding">
+            <ion-card *ngIf="teamData" (click)="goToTeam()">
+                <ion-card-subtitle>Team</ion-card-subtitle>
+                <ion-grid fixed>
+                    <ion-row>
+                        <ion-avatar>
+                            <img [src]='teamData["Logo del Equipo"]' />
+                        </ion-avatar>
+                        <ion-card-header>
+                            <ion-card-title>{{teamData["Nombre del equipo"]}}</ion-card-title>
+                        </ion-card-header>
+                    </ion-row>
+                </ion-grid>
+            </ion-card>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="refresh-outline" refreshingSpinner="bubbles">
+        </ion-refresher-content>
+    </ion-refresher>
+</ion-content>
