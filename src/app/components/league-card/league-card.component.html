@@ -2,7 +2,7 @@
     <ion-grid fixed>
         <ion-row>
             <ion-avatar>
-                <img [src]='league["Logo de la Liga"]' />
+                <img [src]='league["Logo de la Liga"] | imageSanitizer' />
             </ion-avatar>
             <ion-card-header>
                 <ion-card-subtitle>League</ion-card-subtitle>

@@ -5,6 +5,10 @@ import { IonicModule } from '@ionic/angular';
 import { LeagueCardComponent } from './league-card/league-card.component';
 import { MainHeaderComponent } from './main-header/main-header.component';
 import { ListComponent } from './list/list.component';
+import { PipesModule } from '../pipes/pipes.module';
+import { ModalPlayerComponent } from './modal-player/modal-player.component';
+import { ModalTeamComponent } from './modal-team/modal-team.component';
+import { FormsModule, NgForm } from '@angular/forms';
 
 
 
@@ -13,7 +17,9 @@ import { ListComponent } from './list/list.component';
     MainHeaderComponent,
     HeaderComponent,
     LeagueCardComponent,
-    ListComponent
+    ListComponent,
+    ModalPlayerComponent,
+    ModalTeamComponent,
   ],
   exports:  [
     MainHeaderComponent,
@@ -23,7 +29,9 @@ import { ListComponent } from './list/list.component';
   ],
   imports: [
     CommonModule,
-    IonicModule
+    IonicModule,
+    PipesModule,
+    FormsModule 
   ]
 })
 export class ComponentsModule { }

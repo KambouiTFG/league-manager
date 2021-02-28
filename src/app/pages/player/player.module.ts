@@ -8,6 +8,7 @@ import { PlayerPageRoutingModule } from './player-routing.module';
 
 import { PlayerPage } from './player.page';
 import { ComponentsModule } from '../../components/components.module';
+import { PipesModule } from '../../pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ComponentsModule } from '../../components/components.module';
     FormsModule,
     IonicModule,
     PlayerPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    PipesModule
   ],
   declarations: [PlayerPage]
 })

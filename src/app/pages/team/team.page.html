@@ -9,10 +9,10 @@
             <ion-icon slot="icon-only" name="shirt-outline"></ion-icon>
         </ion-buttons>
     </ion-toolbar>
-    <app-header [title]='teamInfo["Nombre del equipo"]' [img]='teamInfo["Logo del Equipo"]' *ngIf="teamInfo"></app-header>
+    <app-header [title]='teamInfo["Nombre del equipo"]' [img]='teamInfo["Logo del Equipo"] ' *ngIf="teamInfo"></app-header>
     <app-header title="Not found" img="../../../assets/icon/404.png" *ngIf="!teamInfo"></app-header>
 
-    <app-list [players]="players" *ngIf="players"></app-list>
+    <app-list [players]="players" *ngIf="players" [teamInfo]="teamInfo" (refresh)="doRefresh($event)"></app-list>
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content pullingIcon="refresh-outline" refreshingSpinner="bubbles">
         </ion-refresher-content>

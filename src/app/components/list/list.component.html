@@ -1,33 +1,37 @@
 <ion-toolbar class="ion-text-center pre-lista">
-    <ion-title *ngIf="teams">Teams</ion-title>
-    <ion-title *ngIf="players">Players</ion-title>
+    <ion-title *ngIf="teams">Teams
+        <ion-badge color="secondary" mode="ios">{{teams.length}}</ion-badge>
+    </ion-title>
+    <ion-title *ngIf="players">Players
+        <ion-badge color="success" mode="ios">{{players.length}}</ion-badge>
+    </ion-title>
 
 </ion-toolbar>
-<ion-toolbar class="middle-lista">
+<ion-toolbar class="middle-lista padding" mode="ios">
     <ion-buttons slot="start">
-        <ion-button>
+        <ion-button shape="round" fill="solid" color="primary" (click)="newForm()">
             <ion-icon slot="icon-only" name="add"></ion-icon>
         </ion-button>
     </ion-buttons>
-    <ion-searchbar mode="ios" placeholder="Search team" animated></ion-searchbar>
+    <ion-searchbar mode="ios" placeholder="Search..." animated (ionChange)="searchText($event)" debounce="700" [value]="toSearch"></ion-searchbar>
 
 </ion-toolbar>
 <div class="lista">
     <ion-list *ngIf="teams">
-        <ion-item-sliding *ngFor="let team of teams">
+        <ion-item-sliding *ngFor='let team of teams | search:toSearch:true'>
             <ion-item (click)="goToTeam(team)">
                 <ion-avatar slot="start">
-                    <img [src]='team["Logo del Equipo"]'>
+                    <img [src]='team["Logo del Equipo"]| imageSanitizer'>
                 </ion-avatar>
                 <ion-label>{{team["Nombre del equipo"]}}</ion-label>
             </ion-item>
             <ion-item-options side="start">
-                <ion-item-option color="warning">
+                <ion-item-option color="warning" (click)="modalTeamEdit(team)">
                     <ion-icon slot="icon-only" name="color-wand"></ion-icon>
                 </ion-item-option>
             </ion-item-options>
             <ion-item-options side="end">
-                <ion-item-option color="danger">
+                <ion-item-option color="danger" (click)="presentAlertDeleteTeam(team)">
                     <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
                 </ion-item-option>
             </ion-item-options>
@@ -35,20 +39,20 @@
     </ion-list>
 
     <ion-list *ngIf="players">
-        <ion-item-sliding *ngFor="let player of players">
+        <ion-item-sliding *ngFor='let player of players | search:toSearch:false'>
             <ion-item (click)="goToPlayer(player)">
                 <ion-avatar slot="start">
-                    <img [src]='player["Avatar"]'>
+                    <img [src]='player["Avatar"] | imageSanitizer'>
                 </ion-avatar>
                 <ion-label>{{player["Nombre del Jugador"]}}</ion-label>
             </ion-item>
             <ion-item-options side="start">
-                <ion-item-option color="warning">
+                <ion-item-option color="warning" (click)="modalPlayerEdit(player)">
                     <ion-icon slot="icon-only" name="color-wand"></ion-icon>
                 </ion-item-option>
             </ion-item-options>
             <ion-item-options side="end">
-                <ion-item-option color="danger">
+                <ion-item-option color="danger" (click)="presentAlertDeletePlayer(player)">
                     <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
                 </ion-item-option>
             </ion-item-options>

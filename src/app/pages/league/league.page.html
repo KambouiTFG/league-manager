@@ -14,7 +14,7 @@
     <app-header title="Not found" img="../../../assets/icon/404.png" *ngIf="!leagueInfo"></app-header>
 
 
-    <app-list [teams]="teams" *ngIf="teams"></app-list>
+    <app-list [teams]="teams" *ngIf="teams" [leagueInfo]="leagueInfo" (refresh)="doRefresh($event)"></app-list>
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content pullingIcon="refresh-outline" refreshingSpinner="bubbles">
         </ion-refresher-content>
