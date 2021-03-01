@@ -75,7 +75,7 @@ export class ModalTeamComponent implements OnInit {
     this.disabledButton = !this.disabledButton
     this.data.editTeam(newTeam).subscribe( resp => {
       this.team ? this.presentToast('Team updated') : this.presentToast('Team created') ;
-      this.modalCtrl.dismiss();
+      this.modalCtrl.dismiss('refresh');
       console.log(resp);
     })
   }

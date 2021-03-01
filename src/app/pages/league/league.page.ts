@@ -55,5 +55,4 @@ export class LeaguePage implements OnInit {
     this.teams = null;
     this.getData(event)
   }
-
 }

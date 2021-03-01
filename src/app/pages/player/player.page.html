@@ -1,63 +1,44 @@
 <ion-content color="light">
-    <ion-toolbar color="light">
-        <ion-buttons slot="start">
-            <ion-back-button defaultHref="leagues"></ion-back-button>
-        </ion-buttons>
-        <app-header title="Player info"></app-header>
+    <div class="max">
+        <ion-toolbar color="light">
+            <ion-buttons slot="start">
+                <ion-back-button defaultHref="leagues"></ion-back-button>
+            </ion-buttons>
+            <app-header title="Player info"></app-header>
 
-        <ion-buttons slot="end">
-            <ion-icon slot="icon-only" name="person-circle-outline"></ion-icon>
-        </ion-buttons>
-    </ion-toolbar>
-    <div class="player ion-padding" *ngIf="infoPlayer">
+            <ion-buttons slot="end">
+                <ion-icon slot="icon-only" name="person-circle-outline"></ion-icon>
+            </ion-buttons>
+        </ion-toolbar>
+        <div class="player ion-padding" *ngIf="infoPlayer">
 
-        <img [src]="infoPlayer.Avatar | imageSanitizer" class="img-avatar">
-
-
-        <ion-item>
-            <ion-label>
-                <h2 class="text-color">Name</h2>
-                <p class="ion-text-center">{{infoPlayer["Nombre del Jugador"]}}</p>
-            </ion-label>
-        </ion-item>
-
-        <ion-item>
-            <ion-label>
-                <h2 class="text-color">Team</h2>
-                <p class="ion-text-center">
-                    <ion-card *ngIf="teamData" (click)="goToTeam()">
-                        <ion-item>
-                            <ion-avatar slot="start" class="team-avatar">
-                                <img [src]='teamData["Logo del Equipo"] | imageSanitizer' />
-                            </ion-avatar>
-                            <ion-label>{{teamData["Nombre del equipo"]}}</ion-label>
-                        </ion-item>
-                    </ion-card>
-                </p>
-            </ion-label>
-        </ion-item>
+            <img [src]="infoPlayer.Avatar | imageSanitizer" class="img-avatar">
 
 
+            <ion-item>
+                <ion-label>
+                    <h2 class="text-color">Name</h2>
+                    <p class="ion-text-center">{{infoPlayer["Nombre del Jugador"]}}</p>
+                </ion-label>
+            </ion-item>
 
-        <!-- <div class="ion-padding">
-            <ion-card *ngIf="teamData" (click)="goToTeam()">
-                <ion-card-subtitle>Team</ion-card-subtitle>
-                <ion-item>
-                    <ion-avatar slot="start" class="team-avatar">
-                        <img [src]='teamData["Logo del Equipo"]' />
-                    </ion-avatar>
-                    <ion-label>{{teamData["Nombre del equipo"]}}</ion-label>
-                </ion-item>
-            </ion-card>
-        </div> -->
-
+            <ion-item>
+                <ion-label>
+                    <h2 class="text-color">Team</h2>
+                    <p class="ion-text-center">
+                        <ion-card *ngIf="teamData" (click)="goToTeam()">
+                            <ion-item>
+                                <ion-avatar slot="start" class="team-avatar">
+                                    <img [src]='teamData["Logo del Equipo"] | imageSanitizer' />
+                                </ion-avatar>
+                                <ion-label>{{teamData["Nombre del equipo"]}}</ion-label>
+                            </ion-item>
+                        </ion-card>
+                    </p>
+                </ion-label>
+            </ion-item>
+        </div>
     </div>
-
-
-
-
-
-
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content pullingIcon="refresh-outline" refreshingSpinner="bubbles">
         </ion-refresher-content>

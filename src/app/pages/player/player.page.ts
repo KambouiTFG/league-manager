@@ -52,6 +52,7 @@ export class PlayerPage implements OnInit {
   doRefresh(event: any) {
     this.infoPlayer = null;
     this.teamData = null;
+    event.target.complete();
     this.getData(event)
   }
 

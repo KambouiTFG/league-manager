@@ -17,6 +17,7 @@ export class ListComponent implements OnInit, OnDestroy {
   @Output() refresh = new EventEmitter();
   subDeleteTeam: Subscription;
   subDeletePlayer: Subscription;
+  subRefresh: Subscription;
 
 
   @Input() teams: Team[];
@@ -42,19 +43,28 @@ export class ListComponent implements OnInit, OnDestroy {
     if (this.subDeletePlayer) {
       this.subDeletePlayer.unsubscribe();  
     }
+
+    if (this.subRefresh) {
+      this.subRefresh.unsubscribe();  
+    }
   }
 
   ngOnInit() {
     this.subDeleteTeam = this.uiCtrl.deleteTeam.subscribe( r => {
       this.deleteTeam(r);
-      this.refresh.emit('');
+      //this.refresh.emit('');
     });
 
     this.subDeletePlayer = this.uiCtrl.deletePlayer.subscribe( r => {
       this.deletePlayer(r);
-      this.refresh.emit('');
-
+      //this.refresh.emit('');
     });
+
+    this.subRefresh = this.uiCtrl.refresh.subscribe( r => {
+      this.refresh.emit('');
+    });
+
+
   }
 
   

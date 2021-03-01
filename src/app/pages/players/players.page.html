@@ -1,44 +1,43 @@
 <ion-content color="light" class="ion-padding">
-    <app-header title="Players" img="../../../assets/icon/player.png"></app-header>
+    <div class="max">
+        <app-header title="Players" img="../../../assets/icon/player.png"></app-header>
 
-    <ion-toolbar class="header">
-        <ion-row>
-            <ion-col size="9">
-                <ion-searchbar mode="ios" animated placeholder="Search..." [(ngModel)]="name"></ion-searchbar>
-            </ion-col>
-            <ion-col size="3">
+        <ion-toolbar class="header">
+            <ion-buttons slot="end" mode="ios">
                 <ion-button (click)="search()" fill="solid" shape="round" color="primary">
                     <ion-icon slot="icon-only" name="search"></ion-icon>
                 </ion-button>
-            </ion-col>
-        </ion-row>
-        <ion-buttons class="center">
-            <ion-checkbox [(ngModel)]="teamName"></ion-checkbox>
-            <ion-label>Team´s name</ion-label>
-        </ion-buttons>
-    </ion-toolbar>
+            </ion-buttons>
+            <ion-searchbar mode="ios" animated placeholder="Search..." [(ngModel)]="name"></ion-searchbar>
 
-    <div class="div-results">
-        <ion-title *ngIf="!players" class="ion-text-center">
-            Enter any name to search!
-        </ion-title>
-        <ion-title *ngIf="players" class="ion-text-center">Results
-            <ion-badge color="primary" mode="ios">{{players.length}}</ion-badge>
-        </ion-title>
-        <ion-list class="list" *ngIf="players">
-            <ion-card (click)="goToPlayer(player)" *ngFor="let player of players">
-                <ion-grid fixed>
-                    <ion-row>
-                        <ion-avatar>
-                            <img [src]='player["Avatar"] | imageSanitizer' />
-                        </ion-avatar>
-                        <ion-card-header>
-                            <ion-card-subtitle>Player</ion-card-subtitle>
-                            <ion-card-title>{{player["Nombre del Jugador"]}}</ion-card-title>
-                        </ion-card-header>
-                    </ion-row>
-                </ion-grid>
-            </ion-card>
-        </ion-list>
+            <ion-buttons class="center">
+                <ion-checkbox [(ngModel)]="teamName"></ion-checkbox>
+                <ion-label>Team´s name</ion-label>
+            </ion-buttons>
+        </ion-toolbar>
+
+        <div class="div-results">
+            <ion-title *ngIf="!players" class="ion-text-center">
+                Enter any name to search!
+            </ion-title>
+            <ion-title *ngIf="players" class="ion-text-center">Results
+                <ion-badge color="primary" mode="ios">{{players.length}}</ion-badge>
+            </ion-title>
+            <ion-list class="list" *ngIf="players">
+                <ion-card (click)="goToPlayer(player)" *ngFor="let player of players">
+                    <ion-grid fixed>
+                        <ion-row>
+                            <ion-avatar>
+                                <img [src]='player["Avatar"] | imageSanitizer' />
+                            </ion-avatar>
+                            <ion-card-header>
+                                <ion-card-subtitle>Player</ion-card-subtitle>
+                                <ion-card-title>{{player["Nombre del Jugador"]}}</ion-card-title>
+                            </ion-card-header>
+                        </ion-row>
+                    </ion-grid>
+                </ion-card>
+            </ion-list>
+        </div>
     </div>
 </ion-content>

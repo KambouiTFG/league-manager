@@ -80,7 +80,7 @@ export class ModalPlayerComponent implements OnInit {
     this.disabledButton = !this.disabledButton
     this.data.editPlayer(player).subscribe( resp => {
       this.player ? this.presentToast('Player updated') : this.presentToast('Player created');
-      this.modalCtrl.dismiss();
+      this.modalCtrl.dismiss('refresh');
       console.log(resp);
     })
   }

@@ -10,6 +10,7 @@ import { League, Player, Team } from '../interfaces/interfaces';
 export class UiServiceService {
   deleteTeam  = new EventEmitter();
   deletePlayer  = new EventEmitter();
+  refresh = new EventEmitter();
 
 
   constructor(private loadingCtrl: LoadingController,
@@ -40,6 +41,11 @@ export class UiServiceService {
         team
       }
     });
+
+    modal.onDidDismiss()
+      .then((data) => {
+        data.data ? this.refresh.emit('') : null;
+    });
     return await modal.present();
   }
 
@@ -51,6 +57,10 @@ export class UiServiceService {
         teamInfo,
         player
       }
+    });
+    modal.onDidDismiss()
+      .then((data) => {
+        data.data ? this.refresh.emit('') : null;
     });
     return await modal.present();
   }
@@ -68,6 +78,7 @@ export class UiServiceService {
           text: 'Delete',
           handler: () => {
             this.deleteTeam.emit(team);
+            this.refresh.emit('')
           }
         }
       ]
@@ -88,6 +99,7 @@ export class UiServiceService {
           text: 'Delete',
           handler: () => {
             this.deletePlayer.emit(player);
+            this.refresh.emit('')
           }
         }
       ]
