@@ -45,5 +45,4 @@ export class HomePage implements OnInit {
       await this.uiCtrl.dismisLoading(loadingg);
     })
   }
-
 }

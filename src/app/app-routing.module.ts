@@ -7,11 +7,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: '',
-    redirectTo: 'leagues',
-    pathMatch: 'full'
-  },
-  {
     path: 'leagues/:idleague',
     loadChildren: () => import('./pages/league/league.module').then( m => m.LeaguePageModule)
   },
@@ -23,6 +18,15 @@ const routes: Routes = [
     path: 'player/:idplayer',
     loadChildren: () => import('./pages/player/player.module').then( m => m.PlayerPageModule)
   },
+  {
+    path: 'players',
+    loadChildren: () => import('./pages/players/players.module').then( m => m.PlayersPageModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'leagues',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

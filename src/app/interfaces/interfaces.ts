@@ -19,3 +19,11 @@ export interface Player {
     'Logo de la Liga': string;
   }
   
+
+export interface holeTeam {
+  'Nombre del equipo': string;
+  id: string;
+  'Logo del Equipo': string;
+  Liga: string;
+  players: Player[];
+}

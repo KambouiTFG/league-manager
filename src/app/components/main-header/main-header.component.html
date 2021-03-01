@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
     <ion-toolbar>
         <ion-buttons slot="start">
-            <img class="my-icon" src="../../../assets/icon/referee.png" />
+            <img (click)="openFirst()" class="my-icon" src="../../../assets/icon/referee.png" />
         </ion-buttons>
         <ion-title>
             League Manager
@@ -9,3 +9,26 @@
     </ion-toolbar>
 
 </ion-header>
+
+<ion-menu side="start" menuId="first" contentId="main">
+    <ion-header>
+        <ion-toolbar color="primary">
+            <ion-buttons slot="start">
+                <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+            </ion-buttons>
+            <ion-title>Menu</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list>
+            <ion-item (click)='goTo("leagues")'>
+                <img src="../../assets/icon/league.png" />
+                <ion-label class="ion-margin">Leagues</ion-label>
+            </ion-item>
+            <ion-item (click)='goTo("players")'>
+                <ion-img src="../../assets/icon/player.png"></ion-img>
+                <ion-label class="ion-margin">Players</ion-label>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-menu>

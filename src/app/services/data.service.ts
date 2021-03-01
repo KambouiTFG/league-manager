@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
 import { environment } from 'src/environments/environment';
-import { Player, Team, League } from '../interfaces/interfaces';
+import { Player, Team, League, holeTeam } from '../interfaces/interfaces';
 
 const URL = environment.url;
 
@@ -21,6 +21,25 @@ export class DataService {
     query = URL + query;
     // console.log('buscando', query);
     return this.http.get<T>(query);
+  }
+
+  private exeQuery2<T>(query: string, params) {
+    query = URL + query;
+
+    return this.http.get<T>(query, {params});
+  }
+
+  searchPlayersByName(playerName: string) {
+    const params = new HttpParams()
+    .set('Nombre del Jugador', playerName);
+    return this.exeQuery2<Player[]>("players", params);
+  }
+
+  searchPlayersByTeam(teamName: string) {
+    const params = new HttpParams()
+    .set('Nombre del equipo', teamName)
+    .set('_embed', 'players');
+    return this.exeQuery2<holeTeam[]>("teams", params);
   }
 
   getAllLeagues() {
@@ -106,7 +125,7 @@ export class DataService {
   }
 
 
-
+  
 }
 
 
